@@ -67,15 +67,9 @@ class YahooFinanceScraper(HttpCrawler):
             # print(element)
             title = self.getTitle(element)
             description = self.getDescription(element)
-            print(description)
             author = self.getAuthorName(element)
-            print(author)
             category = self.getCategory(element)
-            print(category)
             image_url = self.getImageUrl(element)
-            print(image_url)
-            parsed_content = ParsedNewsContent(title=title, desc=description, author=author,
-                                               category=category, image_url=image_url,
-                                               website_name=self.website_name, timestamp=time.time())
-            parsed_news_list.append(parsed_content)
-
+            print("HEY")
+            self.saveToTables(site_url = self.website_name, story_date = time.time(), category = category,
+                              description = description, title = title, image_url = image_url, created_at = time.time())

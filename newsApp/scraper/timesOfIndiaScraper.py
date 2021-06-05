@@ -2,7 +2,6 @@ from newsApp.crawler.httpCrawler import HttpCrawler
 from .parsedNewsContent import ParsedNewsContent
 from bs4 import BeautifulSoup
 import time
-from newsApp.models import Articles
 
 
 class TimesOfIndiaScraper(HttpCrawler):
@@ -75,7 +74,5 @@ class TimesOfIndiaScraper(HttpCrawler):
             print(category)
             image_url = self.getImageUrl(element)
             print(image_url)
-            parsed_content = ParsedNewsContent(title=title, desc=description, author=author,
-                                               category=category, image_url=image_url,
-                                               website_name=self.website_name, timestamp=time.time())
-            parsed_news_list.append(parsed_content)
+            self.saveToTables(site_url=self.website_name, story_date=time.time(), category=category,
+                              description=description, title=title, image_url=image_url, created_at=time.time())
