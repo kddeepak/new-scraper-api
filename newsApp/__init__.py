@@ -12,3 +12,4 @@ from newsApp import routes
 from newsApp import models
 from newsApp import scraper
 from newsApp.scraper import yahooFinanceScraper
+from newsApp.scraper import timesOfIndiaScraper
